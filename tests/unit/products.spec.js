@@ -71,6 +71,6 @@ describe('Products.vue', () => {
       const addButton = wrapper.find('.card .button') // busca el boton
       addButton.trigger('click') // se acciona el boton
       expect(store.state.shoppingCart.list.length).to.equal(1) //
-      expect(store.state.shoppingCart.total.to.equal(100.0))
+      expect(store.state.shoppingCart.total).to.equal(100.0)
     })
 })

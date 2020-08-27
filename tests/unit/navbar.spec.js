@@ -18,7 +18,6 @@ const router = new VueRouter(dummyRoutes)
 
 describe('Navbar.vue', () => {
   it('muestra menu de login si el usuario no ha iniciado sesión', () => {
-    store.dispatch('updateUser', undefined)
     const wrapper = mount(Navbar, {
       propsData: {
         title: "Mi Tienda"
@@ -27,10 +26,10 @@ describe('Navbar.vue', () => {
       store,
       router,
     })
+    store.dispatch('updateUser', undefined)
     expect(wrapper.text()).to.include('Login')
   }),
   it('muestra menu de usuario si está logueado', () => {
-    store.dispatch('updateUser', { email: 'user@mystore.com' })
     const wrapper = mount(Navbar, {
       propsData: {
         title: "Mi Tienda"
@@ -39,6 +38,7 @@ describe('Navbar.vue', () => {
       store,
       router,
     })
+    store.dispatch('updateUser', { email: 'user@mystore.com' })
     expect(wrapper.text()).to.include('Usuario')
     expect(wrapper.text()).to.not.include('Login')
   })
